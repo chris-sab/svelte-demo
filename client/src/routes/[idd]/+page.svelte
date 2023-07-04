@@ -1,12 +1,12 @@
 <script lang="ts">
     import { enhance } from "$app/forms";
-    import AnimeComponent from "../AnimeComponent.svelte";
+    import DetailCard from "$lib/components/Card/DetailCard.svelte";
     import type { PageData } from "./$types";
 
     export let data: PageData;
 </script>
 
-<AnimeComponent
+<DetailCard
     title={data.anime.title}
     mal_id={data.anime.mal_id}
     image={data.anime.images.webp.image_url}
@@ -20,11 +20,26 @@
         name="image"
         value={data.anime.images.webp.image_url}
     />
-    <button class="bg-gray-300 rounded p-4 mt-4" type="submit">
-        Add to favorites
-    </button>
+
+    <div class="flex gap-x-4">
+        <button
+            class="w-40 truncate rounded px-4 py-2 mt-4 font-Poppins bg-primaryPurple text-white"
+            type="submit"
+        >
+            Add favorite
+        </button>
+
+        <button
+            class="w-40 truncate rounded px-4 py-2 mt-4 font-Poppins bg-primaryRed text-white"
+            type="submit"
+        >
+            Delete favorite
+        </button>
+    </div>
 </form>
 
-<div class="mt-10">
-    <a class="bg-gray-300 rounded p-4" href="/">Go back to list</a>
+<div class="mt-8">
+    <a class="w-40 truncate rounded px-4 py-2 font-Poppins bg-primaryPurple text-white" href="/">
+        Go back to list
+    </a>
 </div>
